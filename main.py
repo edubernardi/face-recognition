@@ -25,12 +25,8 @@ if uploaded_file is not None:
             "file": (uploaded_file.name, uploaded_file.getvalue(), uploaded_file.type)
         }
         
-        proxies = {
-            "http": "http://127.0.0.1:8080",
-            "https": "http://127.0.0.1:8080"
-        }
         params = {"username": username}
-        response = requests.post(f"{API_ENDPOINT}cadastrar/", files=files, params=params, proxies=proxies, verify=False)
+        response = requests.post(f"{API_ENDPOINT}cadastrar/", files=files, params=params)
         
         if response.status_code == 200:
             st.success("Imagem cadastrada com sucesso!")
